@@ -7,11 +7,15 @@ class Api::ProductsController < ApplicationController
   def create
     @tea = Product.new(
                         name: params[:name],
+                        price: params[:price],
                         description: params[:description],
                         image_url: params[:image_url]
                        )
-    @tea.save
-    render 'show.json.jbuilder'
+    if @tea.save
+      render 'show.json.jbuilder'
+    else
+      render json: {errors: @tea.errors.full_messages}, status: :unprocessable_entity
+    end
   end
 
   def show
@@ -25,10 +29,14 @@ class Api::ProductsController < ApplicationController
     @tea.name = params[:name] || @tea.name || @tea.name
     @tea.description = params[:description] || @tea.description
     @tea.image_url = params[:image_url] || @tea.image_url
+    @tea.price = params[:price] || @tea.price
 
-    @tea.save
 
-    render "show.json.jbuilder"
+    if @tea.save
+      render "show.json.jbuilder"
+    else
+      render json: {errors: @tea.errors.full_messages}, status: :unprocessable_entity
+    end 
   end 
 
   def destroy
