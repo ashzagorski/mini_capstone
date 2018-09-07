@@ -1,7 +1,6 @@
 json.id tea.id
 json.name tea.name
 json.description tea.description
-json.image_url tea.image_url
 json.price tea.price
 json.tax tea.tax
 json.total tea.total
@@ -19,4 +18,8 @@ end
 
 json.supplier do
   json.partial! tea.supplier, partial: 'api/suppliers/supplier', as: :supplier
+end 
+
+json.image do
+  json.partial! tea.image, partial: 'api/images/image', as: :image
 end 

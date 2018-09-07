@@ -10,6 +10,7 @@ class Product < ApplicationRecord
   validates :image_url, uniqueness: true
 
   belongs_to :supplier
+  belongs_to :image
 
   def is_discounted?
     price < 10 
