@@ -13,8 +13,10 @@ json.formatted do
   json.total number_to_currency(tea.total)
  end 
 
-  
-
 if tea.is_discounted?
   json.sale_message "Dicounted Price"
+end 
+
+json.supplier do
+  json.partial! tea.supplier, partial: 'api/suppliers/supplier', as: :supplier
 end 
