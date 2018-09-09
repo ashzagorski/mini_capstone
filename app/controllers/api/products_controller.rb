@@ -23,7 +23,6 @@ class Api::ProductsController < ApplicationController
                         name: params[:name],
                         price: params[:price],
                         description: params[:description],
-                        image_url: params[:image_url]
                        )
     if @tea.save
       render 'show.json.jbuilder'
@@ -42,7 +41,6 @@ class Api::ProductsController < ApplicationController
 
     @tea.name = params[:name] || @tea.name || @tea.name
     @tea.description = params[:description] || @tea.description
-    @tea.image_url = params[:image_url] || @tea.image_url
     @tea.price = params[:price] || @tea.price
 
 

@@ -11,5 +11,7 @@ Rails.application.routes.draw do
     patch '/suppliers/:id' => 'suppliers#update'
     delete '/suppliers/:id' => 'supliers#delete'
     get '/images' => 'images#index'
+
+    post "/users" => "users#create"
   end
 end

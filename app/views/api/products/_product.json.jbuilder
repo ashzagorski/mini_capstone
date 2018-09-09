@@ -6,6 +6,8 @@ json.tax tea.tax
 json.total tea.total
 json.discounted tea.is_discounted?
 
+
+
 json.formatted do 
   json.price number_to_currency(tea.price)
   json.tax number_to_currency(tea.tax)
@@ -20,6 +22,6 @@ json.supplier do
   json.partial! tea.supplier, partial: 'api/suppliers/supplier', as: :supplier
 end 
 
-json.image do
-  json.partial! tea.image, partial: 'api/images/image', as: :image
+json.images do
+  json.array! tea.images, partial: 'api/images/image', as: :image
 end 
