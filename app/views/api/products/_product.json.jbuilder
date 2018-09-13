@@ -25,3 +25,5 @@ end
 json.images do
   json.array! tea.images, partial: 'api/images/image', as: :image
 end 
+
+json.current_user current_user
