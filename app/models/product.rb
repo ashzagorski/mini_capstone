@@ -7,11 +7,13 @@ class Product < ApplicationRecord
   validates :description, presence: true
   validates :description, length: { minimum: 20 }
   validates :description, length: {maximum: 200}
-  validates :image_url, uniqueness: true
+  
 
   belongs_to :supplier
   has_many :images
   has_many :orders
+  has_many :product_categories
+  has_many :categories, through :product_categories
 
 
   def is_discounted?

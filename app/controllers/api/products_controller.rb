@@ -1,10 +1,19 @@
 class Api::ProductsController < ApplicationController
+  before_action :authenticate_admin, except: [:index, :show]
+
   def index
-    @teas = Product.all
+    search_term = params[:searach]
     sort_attribute = params[:sort]
     sort_order = params[:sort_order]
 
-    search_term = params[:search]
+    @teas = Product.all
+
+    category_name = params[:category]
+    if category_name
+      category = Category.find_by(name: category_name)
+      @teas= category.products
+    end 
+
     if search_term
       @teas = @teas.where("name iLIKE ?", "%#{search_term}%"                     ) 
     end 
