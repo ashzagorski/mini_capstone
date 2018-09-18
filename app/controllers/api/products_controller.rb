@@ -2,7 +2,7 @@ class Api::ProductsController < ApplicationController
   before_action :authenticate_admin, except: [:index, :show]
 
   def index
-    search_term = params[:searach]
+    search_term = params[:search]
     sort_attribute = params[:sort]
     sort_order = params[:sort_order]
 
