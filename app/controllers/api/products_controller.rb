@@ -48,7 +48,7 @@ class Api::ProductsController < ApplicationController
   def update
     @tea = Product.find(params[:id])
 
-    @tea.name = params[:name] || @tea.name || @tea.name
+    @tea.name = params[:name] || @tea.name ||
     @tea.description = params[:description] || @tea.description
     @tea.price = params[:price] || @tea.price
 
